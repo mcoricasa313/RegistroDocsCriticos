@@ -27,7 +27,6 @@
                     <x-jet-nav-link href="{{ route('expedientes') }}" :active="request()->routeIs('expedientes')">
                     Configurar Alertas
                     </x-jet-nav-link>
-                 
                 </div>
             </div>
 

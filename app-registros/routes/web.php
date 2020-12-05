@@ -23,6 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('expediente', Expediente::class);
+Route::get('expedientes',Expedientes::class)->name('expedientes');
 
-Route::get('expedientes', Expedientes::class);
+
+
+//Route::get('expediente', Expediente::class);
+
+//Route::get('expedientes', Expedientes::class);

@@ -2,8 +2,17 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
+            
         </x-slot>
-
+        <div class="mt-4">
+            <img src="{{asset('imagenes/logoMTC.jpg')}}" width=400>
+        </div>
+        <br>
+        <h2 class="font-bold text-xl text-gray-800 leading-center" style="text-align:center">
+            SIPRIARE
+        </h2>
+        <h4 style="text-align:center">Sistema Inteligente de Priorizacion,Atencion y Respuesta Automatica</h4>
+        <br>
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -28,19 +37,19 @@
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Recuerdame') }}</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Olvidaste tu clave?') }}
                     </a>
                 @endif
 
                 <x-jet-button class="ml-4">
-                    {{ __('Login') }}
+                    {{ __('Ingresar') }}
                 </x-jet-button>
             </div>
         </form>

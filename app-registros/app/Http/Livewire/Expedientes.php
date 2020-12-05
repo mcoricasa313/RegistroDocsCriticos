@@ -8,7 +8,7 @@ use App\Models\ExpedienteModel;
 class Expedientes extends Component
 {
     public ExpedienteModel $expedientemodel;
-    public $expedientes,$numero_expediente,$asunto,$numero_documento,$folios,$remitente,$prioridad,$uo_destino,$estado,$observacion,$fefefefe;
+    public $idexpediente,$expedientes,$numero_expediente,$asunto,$numero_documento,$folios,$remitente,$prioridad,$uo_destino,$estado,$observacion,$fefefefe;
 
     public $isOpen = 0;
 
@@ -23,7 +23,7 @@ class Expedientes extends Component
     
     public function create()
     {
-        //$this->resetInputFields();
+        $this->resetInputFields();
         $this->openModal();
         //$this->$fefefefe = "abrendod";
     }
@@ -47,8 +47,9 @@ class Expedientes extends Component
         $this->remitente = '';
         $this->prioridad = '';
         $this->uo_destino = '';
-        $this->estado = '';
+        $this->estado = 1;
         $this->observacion = '';
+        $this->idexpediente = '';
 
     }
 
@@ -60,22 +61,26 @@ class Expedientes extends Component
             'numero_documento' => 'required',
             'folios' => 'required',
             'remitente' => 'required',
-            'observacion' => 'observacion'
+            'observacion' => 'required'
 
         ]);
    
-        ExpedienteModel::updateOrCreate(['id' => $this->id], [
+
+
+        ExpedienteModel::updateOrCreate(['id' => $this->idexpediente], [
             'numero_expediente' => $this->numero_expediente,
             'asunto' => $this->asunto,
             'numero_documento' => $this->numero_documento,
             'folios' => $this->folios,
             'remitente' => $this->remitente,
-            'observacion' => $this->observacion
-
+            'observacion' => $this->observacion,
+            'prioridad' => $this->prioridad,
+            'uo_destino' => $this->uo_destino,
+            'estado' => $this->estado
         ]);
   
         session()->flash('message', 
-            $this->post_id ? 'Expediente Actualizado Correctamente.' : 'Expediente Creado Correctamente.');
+            $this->idexpediente ? 'Expediente Actualizado Correctamente.' : 'Expediente Creado Correctamente.');
   
         $this->closeModal();
         $this->resetInputFields();
@@ -84,13 +89,17 @@ class Expedientes extends Component
     public function edit($id)
     {
         $expediente = ExpedienteModel::findOrFail($id);
-        $this->id = $id;
+
+        $this->idexpediente =$expediente->id;
         $this->numero_expediente = $expediente->numero_expediente;
         $this->asunto = $expediente->asunto;
         $this->numero_documento = $expediente->numero_documento;
         $this->folios = $expediente->folios;
         $this->remitente = $expediente->remitente;
         $this->observacion = $expediente->observacion;
+        $this->estado = $expediente->estado;
+        $this->prioridad = $expediente->prioridad;
+        $this->uo_destino = $expediente->uo_destino;
 
         $this->openModal();
     }

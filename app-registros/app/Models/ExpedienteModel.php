@@ -9,6 +9,6 @@ class ExpedienteModel extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'numero_expediente','asunto','numero_documento','folios','remitente','prioridad','uo_destino','estado','observacion'
+        'idexpediente','numero_expediente','asunto','numero_documento','folios','remitente','prioridad','uo_destino','estado','observacion'
     ];
 }
