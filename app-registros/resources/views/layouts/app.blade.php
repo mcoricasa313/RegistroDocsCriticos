@@ -40,4 +40,38 @@
 
         @livewireScripts
     </body>
+    <nav class="bg-red border-b border-gray-100" style="background-color:white;color:gray">
+    <br>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex grid grid-cols-3 gap-4">
+            <div class="...">
+            <img src="{{asset('imagenes/peruprimero.JPG')}}" style="width:80%">
+            </div>
+            <div class="...">
+            CONSULTA SOBRE TRÁMITES Y REQUISITOS
+            <br>
+            <span class="mt-2 text-sm text-gray-500"> 
+            Plataforma de Atención al Ciudadano
+            </span>
+            <br>
+            <span class="mt-2 text-sm text-gray-500"> 
+            Jr. Zorritos 1203-Lima-Perú-C.P.:15082
+            </span>
+            </div>
+            <div class="...">
+            CENTRAL DE CONSULTAS
+            <br>
+            615-7900
+            <br>
+            Lunes a viernes de 8:30 a.m. a 5:00 p.m.
+            </div>
+        </div>
+        <br>    
+        <br>    
+        <br>    
+       
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-right">
+        <hr>
+            Sistema Inteligente de Priorizacion, Asignacion y Repuestas v.1.0.0 Beta
+        </div>
+    </nav>
 </html>

@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\ExpedienteModel;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class Expedientes extends Component
 {
@@ -19,6 +21,7 @@ class Expedientes extends Component
     {
         $this->expedientes = ExpedienteModel::all();
         return view('livewire.expedientes');
+      
     }
     
     public function create()
@@ -50,7 +53,7 @@ class Expedientes extends Component
         $this->estado = 1;
         $this->observacion = '';
         $this->idexpediente = '';
-
+        $this->presicion = '';
     }
 
     public function store()
@@ -65,7 +68,12 @@ class Expedientes extends Component
 
         ]);
    
-
+        $response = Http::post('http://deploy-ml-model-mtc.herokuapp.com/predict', [
+            'asunto' => $this->asunto            
+        ]);
+        $data = json_decode($response->getBody());
+        $this->prioridad = $data->High_priority;
+        $this->presicion = $data->High_priority_prob;
 
         ExpedienteModel::updateOrCreate(['id' => $this->idexpediente], [
             'numero_expediente' => $this->numero_expediente,
@@ -76,7 +84,8 @@ class Expedientes extends Component
             'observacion' => $this->observacion,
             'prioridad' => $this->prioridad,
             'uo_destino' => $this->uo_destino,
-            'estado' => $this->estado
+            'estado' => $this->estado,
+            'presicion' => $this->presicion
         ]);
   
         session()->flash('message', 
@@ -98,9 +107,16 @@ class Expedientes extends Component
         $this->remitente = $expediente->remitente;
         $this->observacion = $expediente->observacion;
         $this->estado = $expediente->estado;
-        $this->prioridad = $expediente->prioridad;
+        //$this->prioridad = $expediente->prioridad;
         $this->uo_destino = $expediente->uo_destino;
 
+        /*      
+        $response = Http::post('http://deploy-ml-model-mtc.herokuapp.com/predict', [
+            'asunto' => $expediente->asunto            
+        ]);
+        $data = json_decode($response->getBody());
+        $this->prioridad = $data->High_priority_prob;
+*/
         $this->openModal();
     }
 

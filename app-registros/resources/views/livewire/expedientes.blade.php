@@ -2,6 +2,7 @@
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
           Mesa de Partes - Registro de Expedientes
     </h2>
+   
 </x-slot>
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-4 lg:px-8">
@@ -37,6 +38,7 @@
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">FOLIOS</th>
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">REMITENTE</th>
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PRIORIDAD</th>
+                        <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PRESICION</th>
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UNIDAD ORGÁNICA</th>
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ESTADO</th>
                         <th scope="col" class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">OBSERVACIÓN</th>
@@ -52,7 +54,24 @@
                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $expediente->numero_documento }}</td>
                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $expediente->folios }}</td>
                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $expediente->remitente }}</td>
-                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $expediente->prioridad }}</td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                            
+                            <?php if($expediente->prioridad==1){ ?>
+                        
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-800">
+                            MUY URGENTE
+                        </span>
+                    
+                    <?php }else{ ?>
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-red-800">
+                            NORMAL
+                        </span>
+                    <?php } ?>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {{ round(($expediente->presicion)*100,0) }}%
+
+                        </td>
                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $expediente->uo_destino }}</td>
                         <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                         <?php if($expediente->estado==1){ ?>

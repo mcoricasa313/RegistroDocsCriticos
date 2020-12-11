@@ -4,7 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\ExpedienteModel;
-
+use GuzzleHttp\Client;
+// este model no sirve
 
 class Expediente extends Component
 {
@@ -64,7 +65,10 @@ class Expediente extends Component
             'observacion' => 'observacion'
 
         ]);
-   
+
+       
+        
+
         ExpedienteModel::updateOrCreate(['id' => $this->id], [
             'numero_expediente' => $this->numero_expediente,
             'asunto' => $this->asunto,
@@ -75,6 +79,8 @@ class Expediente extends Component
 
         ]);
   
+        
+
         session()->flash('message', 
             $this->post_id ? 'Expediente Actualizado Correctamente.' : 'Expediente Creado Correctamente.');
   
@@ -93,6 +99,7 @@ class Expediente extends Component
         $this->remitente = $expediente->remitente;
         $this->observacion = $expediente->observacion;
 
+       
         $this->openModal();
     }
 

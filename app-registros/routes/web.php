@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Expediente;
 use App\Http\Livewire\Expedientes;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('expedientes',Expedientes::class)->name('expedientes');
 
+Route::get('/', function (GuzzleHttp\Client $client){});
 
 
 //Route::get('expediente', Expediente::class);

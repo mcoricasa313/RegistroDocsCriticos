@@ -1,4 +1,27 @@
+<nav class="bg-red border-b border-gray-100" style="background-color:#bf0909;color:white">
+
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">  
+        <div class="flex-shrink-0 flex items-center">
+            <div>   
+            <img src="{{asset('imagenes/gobpe.png')}}" style="width:60%">
+            </div>
+         
+            <div style="padding-left:0px;width:30%;font-size:10pt">
+                <div style="padding-left:10px;border-left:1px solid white">   
+                Sistema Inteligente de Priorizacion,asignacion y Respuesta de solicitudes
+                </div>
+                  
+            </div>
+        
+        </div>
+    </div>
+</nav>
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+
+
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -13,10 +36,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('expedientes') }}" :active="request()->routeIs('expedientes')">
-                    Mesa de Partes
+                    Solicitudes
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('expedientes') }}" :active="request()->routeIs('expedientes')">
                     Usuarios
@@ -203,3 +226,5 @@
         </div>
     </div>
 </nav>
+
+

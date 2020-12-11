@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('expedientes') }}" :active="request()->routeIs('expedientes')">
-                    Mesa de Partes
+                    Solicitudes
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('expedientes') }}" :active="request()->routeIs('expedientes')">
                     Usuarios
